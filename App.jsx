@@ -53,9 +53,9 @@ export default function App() {
       const weatherInfo = {
         city: data.city, //get the city
         condition: data.condition.description, //the weather conditions. maybe add
-
-        temperature: data.temperature.current,
-        feelsLike: data.temperature.feels_like,
+        iconUrl: data.condition.icon_url, //icons are kinda ugly
+        temperature: data.temperature.current, //the current temps
+        feelsLike: data.temperature.feels_like, //feeling like them
       };
 
       setWeatherData(weatherInfo);
@@ -73,7 +73,7 @@ export default function App() {
     setLoading(true);
     setError("");
     setWeatherData(null);
-
+    // api with axios
     try {
       const response = await axios.get(
         `https://api.shecodes.io/weather/v1/current?query=${city}&key=${API_KEY}`
