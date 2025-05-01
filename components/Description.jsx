@@ -10,11 +10,11 @@ export default function Description({ weatherData, preferences }) {
   let suggestion = "";
 
   if (temperature <= parseFloat(tooColdTemp)) {
-    suggestion = "It's very cold today. Wear a thick coat and scarf!";
+    suggestion = "Wear a thick coat and scarf!";
   } else if (temperature >= parseFloat(tooWarmTemp)) {
-    suggestion = "It’s too warm! Wear breathable clothes and stay hydrated.";
+    suggestion = "Wear breathable clothes and stay hydrated.";
   } else {
-    suggestion = "Perfect temperature! Dress casually.";
+    suggestion = "Dress casually.";
   }
 
   const conditionLower = condition.toLowerCase();
@@ -29,13 +29,15 @@ export default function Description({ weatherData, preferences }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.bodyContainer}>
-        <Text style={styles.suggestionText}>{suggestion}</Text>
-      </View>
+      <Text style={styles.suggestionText}>{suggestion}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {},
+  suggestionText: {
+    fontSize: 24,
+    color: "#666666",
+  },
 });
