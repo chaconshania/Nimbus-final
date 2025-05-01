@@ -5,8 +5,7 @@ import Home from "./screens/Home";
 import SettingsScreen from "./screens/Settings";
 import useWeather from "./hooks/UseWeather";
 import determineColor from "./components/DetermineColor";
-import { TouchableOpacity } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import IconButton from "./components/IconButton";
 
 export default function App() {
   const [city, setCity] = useState("");
@@ -47,12 +46,10 @@ export default function App() {
             preferences={preferences}
             determineColor={(temp) => determineColor(temp, preferences)}
           />
-          <TouchableOpacity
-            style={styles.settingButton}
+          <IconButton
+            iconName="settings-outline"
             onPress={() => setShowSettings(true)}
-          >
-            <Ionicons name="settings-outline" size={24} color="#6E6D6D" />
-          </TouchableOpacity>
+          />
         </>
       ) : (
         <SettingsScreen

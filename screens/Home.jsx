@@ -3,8 +3,8 @@ import { View, Button, ActivityIndicator, StyleSheet } from "react-native";
 import SearchModal from "../components/SearchModal";
 import WeatherDisplay from "../components/WeatherDisplay";
 import Description from "../components/Description";
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { TouchableOpacity } from "react-native";
+
+import IconButton from "../components/IconButton";
 
 export default function Home({
   city,
@@ -33,12 +33,7 @@ export default function Home({
         <ActivityIndicator size="large" />
       ) : (
         <>
-          <TouchableOpacity
-            onPress={() => setShowModal(true)}
-            style={styles.searchButton}
-          >
-            <Ionicons name="search" size={24} color="#6E6D6D" />
-          </TouchableOpacity>
+          <IconButton iconName="search" onPress={() => setShowModal(true)} />
 
           <SearchModal
             visible={showModal}
