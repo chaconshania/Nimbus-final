@@ -24,7 +24,7 @@ export default function Description({ weatherData, preferences }) {
   } else if (conditionLower.includes("snow")) {
     suggestion += " It's going to snow today!";
   } else if (conditionLower.includes("wind")) {
-    suggestion += " It’s windy today!";
+    suggestion += " It’s windy though, so consider bundling up...";
   }
 
   return (
