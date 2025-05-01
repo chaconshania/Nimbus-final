@@ -14,8 +14,9 @@ export default function Home({
   weatherData,
   preferences,
   determineColor,
+  showModal,
+  setShowModal,
 }) {
-  const [showModal, setShowModal] = useState(false);
   const getFeelingLabel = (feelsLikeTemp) => {
     if (!preferences) return "unknown";
 
@@ -33,8 +34,6 @@ export default function Home({
         <ActivityIndicator size="large" />
       ) : (
         <>
-          <IconButton iconName="search" onPress={() => setShowModal(true)} />
-
           <SearchModal
             visible={showModal}
             onClose={() => setShowModal(false)}

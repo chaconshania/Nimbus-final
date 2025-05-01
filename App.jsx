@@ -6,11 +6,13 @@ import SettingsScreen from "./screens/Settings";
 import useWeather from "./hooks/UseWeather";
 import determineColor from "./components/DetermineColor";
 import IconButton from "./components/IconButton";
+import HeaderButtons from "./components/HeaderButtons";
 
 export default function App() {
   const [city, setCity] = useState("");
   const [preferences, setPreferences] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const {
     weatherData,
@@ -36,6 +38,10 @@ export default function App() {
     <View style={styles.container}>
       {!showSettings ? (
         <>
+          <HeaderButtons
+            onSearchPress={() => setShowModal(true)}
+            onSettingsPress={() => setShowSettings(true)}
+          />
           <Home
             city={city}
             setCity={setCity}
@@ -45,10 +51,8 @@ export default function App() {
             weatherData={weatherData}
             preferences={preferences}
             determineColor={(temp) => determineColor(temp, preferences)}
-          />
-          <IconButton
-            iconName="settings-outline"
-            onPress={() => setShowSettings(true)}
+            showModal={showModal}
+            setShowModal={setShowModal}
           />
         </>
       ) : (
