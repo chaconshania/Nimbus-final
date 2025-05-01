@@ -10,6 +10,7 @@ export default function Home({
   getWeather,
   loading,
   weatherData,
+  preferences,
   determineColor,
 }) {
   const [showModal, setShowModal] = useState(false);
@@ -38,7 +39,10 @@ export default function Home({
                 weatherData={weatherData}
                 determineColor={determineColor}
               />
-              <Description weatherData={weatherData} />
+              <Description
+                weatherData={weatherData}
+                preferences={preferences}
+              />
             </>
           )}
         </>

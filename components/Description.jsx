@@ -1,30 +1,41 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function Description({ weatherData }) {
-  if (!weatherData) return null;
+export default function Description({ weatherData, preferences }) {
+  if (!weatherData || !preferences) return null;
 
   const { temperature, condition } = weatherData;
+  const { tooColdTemp, tooWarmTemp } = preferences;
 
   let suggestion = "";
 
-  if (temperature <= 40) {
-    suggestion = "It's very cold. You should wear a thick coat and scarf.";
-  } else if (temperature <= 60) {
-    suggestion = "A light jacket or sweater should be fine.";
-  } else if (temperature >= 85) {
-    suggestion = "It's hot! Wear something breathable and stay hydrated.";
+  if (temperature <= parseFloat(tooColdTemp)) {
+    suggestion = "It's very cold today. Wear a thick coat and scarf!";
+  } else if (temperature >= parseFloat(tooWarmTemp)) {
+    suggestion = "It’s too warm! Wear breathable clothes and stay hydrated.";
   } else {
-    suggestion = "The weather seems mild. Dress comfortably.";
+    suggestion = "Perfect temperature! Dress casually.";
+  }
+
+  const conditionLower = condition.toLowerCase();
+
+  if (conditionLower.includes("rain")) {
+    suggestion += " Don’t forget an umbrella!";
+  } else if (conditionLower.includes("snow")) {
+    suggestion += " It's going to snow today!";
+  } else if (conditionLower.includes("wind")) {
+    suggestion += " It’s windy today!";
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.bodyContainer}>
-        <Text>{suggestion}</Text>
+        <Text style={styles.suggestionText}>{suggestion}</Text>
       </View>
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {},
+});
