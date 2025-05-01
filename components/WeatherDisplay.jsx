@@ -1,7 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function WeatherDisplay({ weatherData, determineColor }) {
+export default function WeatherDisplay({
+  weatherData,
+  determineColor,
+  getFeelingLabel,
+}) {
   return (
     <View style={styles.weatherInfo}>
       <Text style={styles.locationText}>{weatherData.city}</Text>
@@ -10,7 +14,7 @@ export default function WeatherDisplay({ weatherData, determineColor }) {
         <Text
           style={[
             styles.weatherText,
-            { color: determineColor(weatherData.temperature) },
+            { color: determineColor(weatherData.feelsLike) },
           ]}
         >
           {weatherData.temperature.toFixed(2)}°F{" "}
@@ -18,15 +22,16 @@ export default function WeatherDisplay({ weatherData, determineColor }) {
         today.
       </Text>
       <Text style={styles.headingText}>
-        It feels like{" "}
+        It feels{" "}
         <Text
           style={[
             styles.weatherText,
             { color: determineColor(weatherData.feelsLike) },
           ]}
         >
-          {weatherData.feelsLike.toFixed(2)}°F
+          {getFeelingLabel(weatherData.feelsLike)}
         </Text>
+        !
       </Text>
     </View>
   );
