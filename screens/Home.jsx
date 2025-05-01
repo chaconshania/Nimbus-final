@@ -38,7 +38,7 @@ export default function Home({
                 weatherData={weatherData}
                 determineColor={determineColor}
               />
-              <Description />
+              <Description weatherData={weatherData} />
             </>
           )}
         </>
