@@ -33,8 +33,8 @@ export default function UseWeather(setCity) {
         city: data.city,
         condition: data.condition.description,
         iconUrl: data.condition.icon_url,
-        temperature: data.temperature.current,
-        feelsLike: data.temperature.feels_like,
+        temperature: (data.temperature.current * 9) / 5 + 32,
+        feelsLike: (data.temperature.feels_like * 9) / 5 + 32,
       };
 
       setWeatherData(weatherInfo);
