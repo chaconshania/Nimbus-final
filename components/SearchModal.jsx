@@ -4,9 +4,12 @@ import {
   View,
   Text,
   TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 
 export default function SearchModal({
@@ -18,38 +21,44 @@ export default function SearchModal({
 }) {
   return (
     <Modal animationType="slide" transparent={true} visible={visible}>
-      <View style={styles.modalBackground}>
-        <View style={styles.modalContainer}>
-          <View style={styles.content}>
-            <View style={styles.slider}></View>
-            <Text style={styles.modalTitle}>Search city</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter a city"
-              value={city}
-              onChangeText={setCity}
-            />
-          </View>
-          <View style={styles.buttonRow}>
-            <TouchableOpacity
-              style={[styles.button, styles.searchButton]}
-              onPress={getWeather}
-            >
-              <Text style={[styles.buttonText, styles.searchButtonText]}>
-                Search
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.button, styles.cancelButton]}
-              onPress={onClose}
-            >
-              <Text style={[styles.buttonText, styles.cancelButtonText]}>
-                Cancel
-              </Text>
-            </TouchableOpacity>
-          </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.modalBackground}>
+          <KeyboardAvoidingView
+            style={styles.modalContainer}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={40}
+          >
+            <View style={styles.content}>
+              <View style={styles.slider}></View>
+              <Text style={styles.modalTitle}>Search city</Text>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter a city"
+                value={city}
+                onChangeText={setCity}
+              />
+            </View>
+            <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, styles.searchButton]}
+                onPress={getWeather}
+              >
+                <Text style={[styles.buttonText, styles.searchButtonText]}>
+                  Search
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, styles.cancelButton]}
+                onPress={onClose}
+              >
+                <Text style={[styles.buttonText, styles.cancelButtonText]}>
+                  Cancel
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAvoidingView>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 }
@@ -91,7 +100,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     width: "100%",
     paddingLeft: 10,
-    marginBottom: 10,
+    marginVertical: 5,
   },
   searchButton: {
     backgroundColor: "#1F1F1F",
