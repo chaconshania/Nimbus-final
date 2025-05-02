@@ -7,7 +7,7 @@ import useWeather from "./hooks/UseWeather";
 import determineColor from "./components/DetermineColor";
 import IconButton from "./components/IconButton";
 import HeaderButtons from "./components/HeaderButtons";
-
+import ForecastSlider from "./components/ForecastSlider";
 export default function App() {
   const [city, setCity] = useState("");
   const [preferences, setPreferences] = useState(null);
@@ -54,6 +54,7 @@ export default function App() {
             showModal={showModal}
             setShowModal={setShowModal}
           />
+          <ForecastSlider />
         </>
       ) : (
         <SettingsScreen
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    padding: 20,
+    paddingVertical: 20,
   },
   settingButton: {
     backgroundColor: "#F9F9F9",

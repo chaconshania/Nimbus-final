@@ -29,7 +29,6 @@ export default function SearchModal({
             keyboardVerticalOffset={40}
           >
             <View style={styles.content}>
-              <View style={styles.slider}></View>
               <Text style={styles.modalTitle}>Search city</Text>
               <TextInput
                 style={styles.input}
@@ -80,7 +79,6 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     width: "90%",
-    padding: 10,
     justifyContent: "space-between",
   },
   content: {
@@ -120,11 +118,5 @@ const styles = StyleSheet.create({
   },
   buttonRow: {
     paddingBottom: 30,
-  },
-  slider: {
-    height: 5,
-    backgroundColor: "#E2E2E2",
-    width: 100,
-    borderRadius: 100,
   },
 });

@@ -53,7 +53,9 @@ export default function SettingsScreen({
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.subtitle}>Change your weather preferences.. </Text>
+        <Text style={styles.subtitle}>
+          Personalize your app by inputting your temperature preferences...{" "}
+        </Text>
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Too Cold Temperature (°):</Text>
           <TextInput
@@ -75,6 +77,7 @@ export default function SettingsScreen({
             placeholder="Enter number"
           />
         </View>
+        <View style={styles.horizontalLine}></View>
       </ScrollView>
 
       <View style={styles.buttonContainer}>
@@ -93,6 +96,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  horizontalLine: {
+    backgroundColor: "#E2E2E2",
+    width: "100%",
+    height: 2,
+  },
   header: {
     paddingTop: 60,
     paddingBottom: 20,
@@ -100,12 +108,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   title: {
-    fontSize: 32,
+    fontSize: 34,
     fontWeight: "bold",
   },
   subtitle: {
     fontSize: 18,
     marginBottom: 20,
+    lineHeight: 25,
   },
   content: {
     paddingHorizontal: 20,
@@ -116,7 +125,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    marginBottom: 5,
+    marginBottom: 10,
   },
   input: {
     borderColor: "#ccc",
@@ -126,7 +135,8 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   buttonContainer: {
-    padding: 20,
     backgroundColor: "#fff",
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 });
