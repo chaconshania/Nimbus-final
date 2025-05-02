@@ -8,9 +8,9 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import CustomButton from "../components/CustomButton";
 
 export default function SettingsScreen({
   setShowSettings,
@@ -44,112 +44,89 @@ export default function SettingsScreen({
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
-      keyboardVerticalOffset={80}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={2}
     >
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.settingsContainer}>
-          <Text style={styles.title}>Settings</Text>
-          <View style={[styles.coldContainer]}>
-            <Text style={styles.label}>Too Cold Temperature (°):</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              value={tooColdTemp}
-              onChangeText={setTooColdTemp}
-              placeholder="Enter number"
-            />
-          </View>
-          <View style={[styles.warmContainer]}>
-            <Text style={styles.label}>Too Warm Temperature (°):</Text>
-            <TextInput
-              style={styles.input}
-              keyboardType="numeric"
-              value={tooWarmTemp}
-              onChangeText={setTooWarmTemp}
-              placeholder="Enter number"
-            />
-          </View>
+      <View style={styles.header}>
+        <Text style={styles.title}>Settings</Text>
+      </View>
+
+      <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.subtitle}>Change your weather preferences.. </Text>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Too Cold Temperature (°):</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={tooColdTemp}
+            onChangeText={setTooColdTemp}
+            placeholder="Enter number"
+          />
         </View>
 
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, styles.saveButton]}
-            onPress={savePreferences}
-          >
-            <Text style={[styles.buttonText, styles.saveButtonText]}>Save</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={[styles.button, styles.cancelButton]}
-            onPress={() => setShowSettings(false)}
-          >
-            <Text style={[styles.buttonText, styles.cancelButtonText]}>
-              Go Back
-            </Text>
-          </TouchableOpacity>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Too Warm Temperature (°):</Text>
+          <TextInput
+            style={styles.input}
+            keyboardType="numeric"
+            value={tooWarmTemp}
+            onChangeText={setTooWarmTemp}
+            placeholder="Enter number"
+          />
         </View>
       </ScrollView>
+
+      <View style={styles.buttonContainer}>
+        <CustomButton title="Save" onPress={savePreferences} type="primary" />
+        <CustomButton
+          title="Go Back"
+          onPress={() => setShowSettings(false)}
+          type="secondary"
+        />
+      </View>
     </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    flexGrow: 1,
-    justifyContent: "space-between",
+  container: {
+    flex: 1,
   },
-  buttonContainer: {
-    display: "flex",
-  },
-  settingsContainer: {
-    display: "flex",
-    paddingTop: 20,
+  header: {
+    paddingTop: 60,
+    paddingBottom: 20,
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
+  },
+  subtitle: {
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  content: {
+    paddingHorizontal: 20,
+    paddingBottom: 20,
+  },
+  inputGroup: {
     marginBottom: 20,
   },
   label: {
     fontSize: 16,
-    marginTop: 10,
+    marginBottom: 5,
   },
   input: {
     borderColor: "#ccc",
     borderWidth: 1,
-    borderRadius: 5,
-    width: "100%",
-    paddingLeft: 10,
-    marginTop: 5,
-  },
-  button: {
-    height: 50,
     borderRadius: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 5,
+    paddingLeft: 10,
+    paddingVertical: 10,
   },
-
-  saveButton: {
-    backgroundColor: "#1F1F1F",
-  },
-
-  cancelButton: {
-    backgroundColor: "#E2E2E2",
-  },
-
-  buttonText: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-
-  saveButtonText: {
-    color: "white",
-  },
-
-  cancelButtonText: {
-    color: "#5E5E5E",
+  buttonContainer: {
+    padding: 20,
+    backgroundColor: "#fff",
   },
 });
