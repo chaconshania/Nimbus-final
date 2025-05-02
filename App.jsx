@@ -54,7 +54,6 @@ export default function App() {
             showModal={showModal}
             setShowModal={setShowModal}
           />
-          <ForecastSlider />
         </>
       ) : (
         <SettingsScreen

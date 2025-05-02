@@ -53,6 +53,7 @@ export default function SettingsScreen({
       </View>
 
       <ScrollView contentContainerStyle={styles.content}>
+        <Text style={styles.heading}>Personalize Temp</Text>
         <Text style={styles.subtitle}>
           Personalize your app by inputting your temperature preferences...{" "}
         </Text>
@@ -110,6 +111,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 34,
     fontWeight: "bold",
+  },
+  heading: {
+    fontSize: 28,
+    fontWeight: 500,
+    marginBottom: 10,
   },
   subtitle: {
     fontSize: 18,

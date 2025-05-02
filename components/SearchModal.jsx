@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
   },
-  searchButtonText: { color: "white" },
+  searchButtonText: { color: "white", fontSize: 16 },
   modalBackground: {
     flex: 1,
     backgroundColor: "#F3F3F3",
@@ -102,13 +102,14 @@ const styles = StyleSheet.create({
   },
   searchButton: {
     backgroundColor: "#1F1F1F",
-    marginBottom: 8,
+    marginBottom: 9,
   },
   cancelButton: {
     backgroundColor: "#E2E2E2",
   },
   cancelButtonText: {
     color: "#5E5E5E",
+    fontSize: 16,
   },
   button: {
     height: 50,
@@ -117,6 +118,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonRow: {
-    paddingBottom: 30,
+    paddingBottom: 25,
   },
 });
